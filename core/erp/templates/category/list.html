@@ -1,0 +1,22 @@
+{% extends 'list.html' %}
+
+{% block columns %}
+<tr>
+    <th scope="col">Nro</th>
+    <th scope="col">Nombre</th>
+    <th scope="col">Opciones</th>
+  </tr>
+{% endblock %}
+
+{% block rows %}
+{% for category in object_list %}
+<tr>
+    <td>{{ category.id }}</td>
+    <td>{{ category.name }}</td>
+    <td>
+        <a href="{% url 'erp:category_edit' category.id %}" class="btn btn-outline-warning btn-xs"><i class="fas fa-edit"></i></a>
+        <a href="{% url 'erp:category_delete' category.id %}" class="btn btn-outline-danger btn-xs"><i class="fas fa-trash"></i></a>
+    </td>
+</tr>
+{% endfor %}
+{% endblock %}
